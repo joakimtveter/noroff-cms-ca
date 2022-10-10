@@ -1,1 +1,1 @@
-# noroff-interaction-design-ca
+# noroff-content-management-systems-ca
