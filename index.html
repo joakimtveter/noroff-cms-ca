@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gamehub - The universe of games</title>
+        <meta
+            name="description"
+            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@300;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+        <link rel="stylesheet" href="./styles/main.css" />
+        <!-- Hotjar Tracking Code for https://noroff-interaction-design-ca.netlify.app -->
+        <script>
+            (function (h, o, t, j, a, r) {
+                h.hj =
+                    h.hj ||
+                    function () {
+                        (h.hj.q = h.hj.q || []).push(arguments);
+                    };
+                h._hjSettings = { hjid: 3144410, hjsv: 6 };
+                a = o.getElementsByTagName('head')[0];
+                r = o.createElement('script');
+                r.async = 1;
+                r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+                a.appendChild(r);
+            })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+        </script>
+    </head>
+    <body id="front-page">
+        <header class="site-header">
+            <div class="site-header__container cwc">
+                <div class="branding">
+                    <img class="logo" src="./assets/logo.png" alt="Go to Gamehub frontpage" />
+                    <a class="sr-only sr-only-focusable" href="#main-content">Skip to main content</a>
+                </div>
+                <button aria-label="Open Menu" class="hamburger">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                    <span class="sr-only">Open menu</span>
+                </button>
+                <div id="mobile-menu" class="mobile-menu">
+                    <div class="header-top-row">
+                        <form role="search" class="search" action="/search.html" method="GET">
+                            <label for="searchbox" class="sr-only">Search for games</label>
+                            <input id="searchbox" type="search" name="q" role="searchbox" />
+                            <button aria-label="Submit Search" class="btn-search" type="submit">
+                                <i class="fas fa-search fa-2l" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                        <div class="utility-menu">
+                            <a href="/wishlist.html" class="utility-btn" aria-label="Go to my wishlist">
+                                <span class="fa-stack fa-2x">
+                                    <i class="fas fa-circle fa-stack-2x primary" aria-hidden="true"></i>
+                                    <i class="fas fa-list fa-stack-1x accent" aria-hidden="true"></i>
+                                </span>
+                                Wishlist
+                            </a>
+                            <a id="login-btn" href="/login.html" class="utility-btn">
+                                <span class="fa-stack fa-2x">
+                                    <i class="fas fa-circle fa-stack-2x primary" aria-hidden="true"></i>
+                                    <i class="fas fa-user fa-stack-1x accent" aria-hidden="true"></i>
+                                </span>
+                                Log in
+                            </a>
+                            <a href="/basket.html" class="utility-btn">
+                                <div id="basket-indicator" class="hidden" aria-hidden="true">2</div>
+                                <span class="fa-stack fa-2x">
+                                    <i class="fas fa-circle fa-stack-2x primary" aria-hidden="true"></i>
+                                    <i class="fas fa-shopping-basket fa-stack-1x accent" aria-hidden="true"></i>
+                                </span>
+                                Basket
+                            </a>
+                        </div>
+                    </div>
+                    <nav class="main-nav" aria-label="main">
+                        <ul>
+                            <li class="main-nav__item">
+                                <a href="/games.html" class="main-nav__link">Purchase Games</a>
+                            </li>
+                            <li class="main-nav__item">
+                                <a href="/sell-games.html" class="main-nav__link">Sell your Games</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <button aria-label="Close Menu" class="hamburger-close">
+                        <i class="far fa-times-circle" aria-hidden="true"></i><span class="sr-only">Close Menu</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main id="main-content">
+            <section class="jumbotron">
+                <div class="jumbotron__content">
+                    <h1 class="sr-only">Welcome to Gamehub - The universe of games</h1>
+                    <h2 class="jumotron__heading">Holiday Super Sale</h2>
+                    <p class="jumotron__subheading">Starts in:</p>
+                    <p class="countdown">
+                        <span class="timer days">00</span>d <span class="timer hrs">00</span>h
+                        <span class="timer min">00</span>m <span class="timer sec">00</span>s
+                    </p>
+                </div>
+            </section>
+            <section class="main-content cwc" style="min-height: auto">
+                <h2 class="section__heading">Best sellers</h2>
+                <ul aria-label="Best selling games" class="product__list">
+                    <li class="product__card">
+                        <img
+                            class="product__image"
+                            src="./assets/product-images/GameHub_covers.webp"
+                            alt=""
+                            data-gameid="1"
+                        />
+                        <div class="product__header">
+                            <a href="/game.html?gameid=1"> <h3 class="product__title">Ping Pong Championship</h3></a
+                            ><button class="wishlist-btn sm" data-active="false" data-gameid="1">
+                                <svg
+                                    class="wishlist-toggle"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512.05 448.77"
+                                >
+                                    <path
+                                        class="wishlist-toggle-full"
+                                        d="M458.35,65c-57.8-48.6-147.1-41.3-202.4,15-55.3-56.3-144.6-63.7-202.4-15-75.2,63.3-64.2,166.5-10.6,221.2l175.4,178.7a52.52,52.52,0,0,0,75.2.1L469,286.25C522.45,231.55,533.65,128.35,458.35,65Z"
+                                        transform="translate(0.05 -31.98)"
+                                    />
+                                    <path
+                                        class="wishlist-toggle-line"
+                                        d="M458.4,64.3C400.6,15.7,311.3,23,256,79.3,200.7,23,111.4,15.6,53.6,64.3-21.6,127.6-10.6,230.8,43,285.5L218.4,464.2a52.52,52.52,0,0,0,75.2.1L469,285.6C522.5,230.9,533.7,127.7,458.4,64.3ZM434.8,251.8,259.4,430.5c-2.4,2.4-4.4,2.4-6.8,0L77.2,251.8c-36.5-37.2-43.9-107.6,7.3-150.7,38.9-32.7,98.9-27.8,136.5,10.5l35,35.7,35-35.7c37.8-38.5,97.8-43.2,136.5-10.6,51.1,43.1,43.5,113.9,7.3,150.8Z"
+                                        transform="translate(0.05 -31.98)"
+                                    />
+                                </svg>
+                                <span class="sr-only">Add to wishlist</span>
+                            </button>
+                        </div>
+                        <div class="product__footer">
+                            <p class="product__price">349 kr</p>
+                            <button class="add-to-cart" data-gameid="1">Add to basket</button>
+                        </div>
+                    </li>
+                    <li class="product__card">
+                        <img
+                            class="product__image"
+                            src="./assets/product-images/GameHub_covers2.webp"
+                            alt=""
+                            data-gameid="2"
+                        />
+                        <div class="product__header">
+                            <a href="/game.html?gameid=2"><h3 class="product__title">Super Duper</h3></a>
+                            <button class="wishlist-btn sm" data-active="false" data-gameid="2">
+                                <svg
+                                    class="wishlist-toggle"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512.05 448.77"
+                                >
+                                    <path
+                                        class="wishlist-toggle-full"
+                                        d="M458.35,65c-57.8-48.6-147.1-41.3-202.4,15-55.3-56.3-144.6-63.7-202.4-15-75.2,63.3-64.2,166.5-10.6,221.2l175.4,178.7a52.52,52.52,0,0,0,75.2.1L469,286.25C522.45,231.55,533.65,128.35,458.35,65Z"
+                                        transform="translate(0.05 -31.98)"
+                                    />
+                                    <path
+                                        class="wishlist-toggle-line"
+                                        d="M458.4,64.3C400.6,15.7,311.3,23,256,79.3,200.7,23,111.4,15.6,53.6,64.3-21.6,127.6-10.6,230.8,43,285.5L218.4,464.2a52.52,52.52,0,0,0,75.2.1L469,285.6C522.5,230.9,533.7,127.7,458.4,64.3ZM434.8,251.8,259.4,430.5c-2.4,2.4-4.4,2.4-6.8,0L77.2,251.8c-36.5-37.2-43.9-107.6,7.3-150.7,38.9-32.7,98.9-27.8,136.5,10.5l35,35.7,35-35.7c37.8-38.5,97.8-43.2,136.5-10.6,51.1,43.1,43.5,113.9,7.3,150.8Z"
+                                        transform="translate(0.05 -31.98)"
+                                    />
+                                </svg>
+                                <span class="sr-only">Add to wishlist</span>
+                            </button>
+                        </div>
+                        <div class="product__footer">
+                            <p class="product__price">199 kr</p>
+                            <button class="add-to-cart" data-gameid="2">Add to basket</button>
+                        </div>
+                    </li>
+                    <li class="product__card">
+                        <img
+                            class="product__image"
+                            src="./assets/product-images/GameHub_covers3.webp"
+                            alt=""
+                            data-gameid="3"
+                        />
+                        <div class="product__header">
+                            <a href="/game.html?gameid=3"><h3 class="product__title">Black</h3></a>
+                            <button class="wishlist-btn sm" data-active="false" data-gameid="3">
+                                <svg
+                                    class="wishlist-toggle"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512.05 448.77"
+                                >
+                                    <path
+                                        class="wishlist-toggle-full"
+                                        d="M458.35,65c-57.8-48.6-147.1-41.3-202.4,15-55.3-56.3-144.6-63.7-202.4-15-75.2,63.3-64.2,166.5-10.6,221.2l175.4,178.7a52.52,52.52,0,0,0,75.2.1L469,286.25C522.45,231.55,533.65,128.35,458.35,65Z"
+                                        transform="translate(0.05 -31.98)"
+                                    />
+                                    <path
+                                        class="wishlist-toggle-line"
+                                        d="M458.4,64.3C400.6,15.7,311.3,23,256,79.3,200.7,23,111.4,15.6,53.6,64.3-21.6,127.6-10.6,230.8,43,285.5L218.4,464.2a52.52,52.52,0,0,0,75.2.1L469,285.6C522.5,230.9,533.7,127.7,458.4,64.3ZM434.8,251.8,259.4,430.5c-2.4,2.4-4.4,2.4-6.8,0L77.2,251.8c-36.5-37.2-43.9-107.6,7.3-150.7,38.9-32.7,98.9-27.8,136.5,10.5l35,35.7,35-35.7c37.8-38.5,97.8-43.2,136.5-10.6,51.1,43.1,43.5,113.9,7.3,150.8Z"
+                                        transform="translate(0.05 -31.98)"
+                                    />
+                                </svg>
+                                <span class="sr-only">Add to wishlist</span>
+                            </button>
+                        </div>
+                        <div class="product__footer">
+                            <p class="product__price">399 kr</p>
+                            <button class="add-to-cart" data-gameid="3">Add to basket</button>
+                        </div>
+                    </li>
+                    <li class="product__card">
+                        <img
+                            class="product__image"
+                            src="./assets/product-images/GameHub_covers4.webp"
+                            alt=""
+                            data-gameid="4"
+                        />
+                        <div class="product__header">
+                            <a href="/game.html?4"> <h3 class="product__title">Furious</h3> </a>
+                            <button class="wishlist-btn sm" data-active="false" data-gameid="4">
+                                <svg
+                                    class="wishlist-toggle"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 512.05 448.77"
+                                >
+                                    <path
+                                        class="wishlist-toggle-full"
+                                        d="M458.35,65c-57.8-48.6-147.1-41.3-202.4,15-55.3-56.3-144.6-63.7-202.4-15-75.2,63.3-64.2,166.5-10.6,221.2l175.4,178.7a52.52,52.52,0,0,0,75.2.1L469,286.25C522.45,231.55,533.65,128.35,458.35,65Z"
+                                        transform="translate(0.05 -31.98)"
+                                    />
+                                    <path
+                                        class="wishlist-toggle-line"
+                                        d="M458.4,64.3C400.6,15.7,311.3,23,256,79.3,200.7,23,111.4,15.6,53.6,64.3-21.6,127.6-10.6,230.8,43,285.5L218.4,464.2a52.52,52.52,0,0,0,75.2.1L469,285.6C522.5,230.9,533.7,127.7,458.4,64.3ZM434.8,251.8,259.4,430.5c-2.4,2.4-4.4,2.4-6.8,0L77.2,251.8c-36.5-37.2-43.9-107.6,7.3-150.7,38.9-32.7,98.9-27.8,136.5,10.5l35,35.7,35-35.7c37.8-38.5,97.8-43.2,136.5-10.6,51.1,43.1,43.5,113.9,7.3,150.8Z"
+                                        transform="translate(0.05 -31.98)"
+                                    />
+                                </svg>
+                                <span class="sr-only">Add to wishlist</span>
+                            </button>
+                        </div>
+                        <div class="product__footer">
+                            <p class="product__price">429 kr</p>
+                            <button class="add-to-cart" data-gameid="4">Add to basket</button>
+                        </div>
+                    </li>
+                </ul>
+                <a class="section__link" href="/games.html">Browse more games</a>
+            </section>
+        </main>
+        <footer class="site-footer">
+            <div class="cwc">
+                <div class="footer-branding">
+                    <div class="footer-logo">
+                        <img src="./assets/footer-logo.png" alt="" />
+                    </div>
+                    <div class="some-links">
+                        <ul>
+                            <li class="some-link facebook fa-lg">
+                                <a href="http://facebook.com"
+                                    ><i class="fab fa-facebook-f" aria-hidden="true"></i
+                                    ><span class="sr-only">Facebook</span></a
+                                >
+                            </li>
+                            <li class="some-link instagram fa-lg">
+                                <a href="http://instagram.com"
+                                    ><i class="fab fa-instagram" aria-hidden="true"></i
+                                    ><span class="sr-only">Instagram</span></a
+                                >
+                            </li>
+                            <li class="some-link discord fa-lg">
+                                <a href="http://discord.com"
+                                    ><i class="fab fa-discord" aria-hidden="true"></i
+                                    ><span class="sr-only">Discord</span></a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end some-links -->
+                </div>
+                <!-- end footer-branding -->
+                <nav class="footer-nav" aria-label="footer">
+                    <ul>
+                        <li class="footer-nav__item">
+                            <a href="/account.html" class="footer-nav__link">My Account</a>
+                        </li>
+                        <li class="footer-nav__item">
+                            <a href="/wishlist.html" class="footer-nav__link">My Wishlist</a>
+                        </li>
+                        <li class="footer-nav__item">
+                            <a href="/terms-and-conditions.html" class="footer-nav__link">Terms and conditions</a>
+                        </li>
+                        <li class="footer-nav__item">
+                            <a href="/faq.html" class="footer-nav__link">FAQ</a>
+                        </li>
+                        <li class="footer-nav__item">
+                            <a href="/contact-us.html" class="footer-nav__link">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
+        <script type="module" src="./scripts/main.js"></script>
+        <script type="module" src="./scripts/countdown.js"></script>
+    </body>
+</html>
