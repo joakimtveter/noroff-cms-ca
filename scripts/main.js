@@ -7,6 +7,47 @@ const endpoint = 'https://gamehubapi.tveter.one/wp-json';
 const key = 'consumer_key=ck_acbfe22617ccc393377964d6299bb54d26e007b6';
 const secretKey = 'consumer_secret=cs_6b0773d3d8f02ea5d81759bbaf3bc88af81f8a31';
 
+async function filterGames(catID) {
+    const filterSelect = document.getElementById('category-filter');
+    if (catID === '0') {
+        window.history.pushState({}, '', '/games.html');
+        loadAllGames();
+        return;
+    }
+    window.history.pushState({}, '', `?category=${catID}`);
+    const gamesContainer = document.querySelector('.product__list');
+    try {
+        gamesContainer.innerHTML = `<div class="loading">
+                                        <div class="spinner"></div>
+                                        <span>Loading...</span>
+                                    </div>`;
+        const response = await fetch(`${baseUrl}/wp-json/wc/v3/products?category=${catID}&${key}&${secretKey}`);
+        const filteredGames = await response.json();
+        getAllCategories(catID);
+        renderGames(filteredGames);
+        filterSelect.addEventListener('change', (e) => filterGames(e.target.value));
+    } catch (error) {
+        loadAllGames();
+    }
+}
+
+async function getAllCategories(catID = 0) {
+    const filterSelect = document.getElementById('category-filter');
+    filterSelect.innerHTML = '<option value="0"> - All Grenes - </option>';
+    try {
+        const response = await fetch(`${baseUrl}/wp-json/wc/v3/products/categories?${key}&${secretKey}`);
+        const categories = await response.json();
+        categories.forEach((category) => {
+            filterSelect.innerHTML += `<option value="${category.id}"${catID == category.id ? 'selected' : ''}>${
+                category.name
+            }</option>`;
+        });
+    } catch (error) {
+        console.error(error);
+        filterSelect.setAttribute('disabled', true);
+    }
+}
+
 async function loadSearchResults() {
     const searchTerm = getSearchTerm();
 
@@ -26,6 +67,16 @@ async function loadSearchResults() {
 }
 
 async function loadAllGames() {
+    const filterSelect = document.getElementById('category-filter');
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+        get: (searchParams, prop) => searchParams.get(prop),
+    });
+    let catID = params.category;
+    if (catID) {
+        filterGames(catID);
+        return;
+    }
+
     try {
         const response = await fetch(`${baseUrl}/wp-json/wc/v3/products?${key}&${secretKey}`);
         const games = await response.json();
@@ -34,6 +85,8 @@ async function loadAllGames() {
         enableWishlistButtons();
         updateWishlistBadge();
         productImageEventlistner();
+        getAllCategories();
+        filterSelect.addEventListener('change', (e) => filterGames(e.target.value));
     } catch (error) {
         showToast('Failed to fetch games', 'error');
         console.error(error);
