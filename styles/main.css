@@ -220,6 +220,25 @@ a:focus-visible {
     }
 }
 
+.loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    color: var(--color-accent);
+}
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--color-secondary);
+    border-top-color: var(--color-accent);
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+}
+
 .toast-container.active {
     top: 1rem;
 }
@@ -1298,6 +1317,17 @@ body#page-not-found {
 /* @media (min-width: 55rem) { */
 /* large screens */
 /* } */
+
+/* ANIMATIONS */
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
 /* ACCESSABILLITY */
 
