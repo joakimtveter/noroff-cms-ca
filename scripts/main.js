@@ -26,6 +26,10 @@ async function filterGames(catID) {
         getAllCategories(catID);
         renderGames(filteredGames);
         filterSelect.addEventListener('change', (e) => filterGames(e.target.value));
+        enableAddToCartButtons();
+        enableWishlistButtons();
+        updateWishlistBadge();
+        productImageEventlistner();
     } catch (error) {
         loadAllGames();
     }
