@@ -2,11 +2,6 @@ import { showToast } from './toast.js';
 import { baseUrl, key, secretKey, endpoint } from './apiClient.js';
 
 const currentLocation = window.location.pathname;
-// const baseUrl = 'https://gamehubapi.tveter.one';
-// const endpoint = 'https://gamehubapi.tveter.one/wp-json';
-
-// const key = 'consumer_key=ck_acbfe22617ccc393377964d6299bb54d26e007b6';
-// const secretKey = 'consumer_secret=cs_6b0773d3d8f02ea5d81759bbaf3bc88af81f8a31';
 
 function getValueFromURLParameter(parameter) {
     const urlParams = new Proxy(new URLSearchParams(window.location.search), {
@@ -26,7 +21,7 @@ function setUrlParameterWithoutReload(parameter = '', value = '') {
 
 async function getAllCategories() {
     try {
-        const response = await fetch(`${baseUrl}/wp-json/wc/v3/products/categories?${key}&${secretKey}`);
+        const response = await fetch(`${endpoint}/products/categories?${key}&${secretKey}`);
         const categories = await response.json();
         return categories;
     } catch (error) {
@@ -70,7 +65,7 @@ async function loadGamesPage() {
 
 async function getGamesByCategory(categoryID) {
     try {
-        const response = await fetch(`${baseUrl}/wp-json/wc/v3/products?category=${categoryID}&${key}&${secretKey}`);
+        const response = await fetch(`${endpoint}/products?category=${categoryID}&${key}&${secretKey}`);
         const filteredGames = await response.json();
         return filteredGames;
     } catch (error) {
@@ -80,7 +75,7 @@ async function getGamesByCategory(categoryID) {
 }
 async function getAllGames() {
     try {
-        const response = await fetch(`${baseUrl}/wp-json/wc/v3/products?${key}&${secretKey}`);
+        const response = await fetch(`${endpoint}/products?${key}&${secretKey}`);
         const allGames = await response.json();
         return allGames;
     } catch (error) {
@@ -124,7 +119,7 @@ async function loadSearchResults() {
     const searchTerm = getSearchTerm();
 
     try {
-        const response = await fetch(`${baseUrl}/wp-json/wc/v3/products?search=${searchTerm}&${key}&${secretKey}`);
+        const response = await fetch(`${endpoint}/products?search=${searchTerm}&${key}&${secretKey}`);
         const searchResult = await response.json();
         uptateSearchPageTitleAndSearchBox(searchTerm);
         renderSearchResults(searchResult, searchTerm);
@@ -140,7 +135,7 @@ async function loadSearchResults() {
 
 async function loadFeatuedGames() {
     try {
-        const response = await fetch(`${baseUrl}/wp-json/wc/v3/products?${key}&${secretKey}`);
+        const response = await fetch(`${endpoint}/products?${key}&${secretKey}`);
         const games = await response.json();
         const featuredGames = games.filter((game) => game.featured);
         featuredGames.length = 4;
@@ -169,7 +164,7 @@ async function loadSingleGame() {
 
     // Get single game from API
     try {
-        const response = await fetch(`${baseUrl}/wp-json/wc/v3/products/${params.gameid}?${key}&${secretKey}`);
+        const response = await fetch(`${endpoint}/products/${params.gameid}?${key}&${secretKey}`);
         const game = await response.json();
         renderSingleGame(game);
     } catch (error) {
@@ -188,7 +183,7 @@ async function loadWishlist() {
     }
 
     try {
-        const response = await fetch(`${endpoint}/wc/store/products/`);
+        const response = await fetch(`${endpoint}/products?${key}&${secretKey}`);
         const games = await response.json();
         const wishlistGames = games.filter((game) => wishlist.includes(game.id));
         renderWishlist(wishlistGames);
@@ -215,7 +210,7 @@ async function loadCart() {
         return;
     }
     try {
-        const response = await fetch(`${endpoint}/wc/store/products/`);
+        const response = await fetch(`${endpoint}/products?${key}&${secretKey}`);
         const games = await response.json();
 
         const cartGames = games.filter((game) => {
@@ -356,7 +351,7 @@ function renderCartItems(itemsInCart) {
     let cartItems = '';
 
     itemsInCart.forEach((item) => {
-        cartTotal += item.prices.price * item.quantity;
+        cartTotal += item.price * item.quantity;
         cartItems += `
         <tr>
           <td class="product-image-cell">
@@ -379,13 +374,13 @@ function renderCartItems(itemsInCart) {
                 type="number" 
                 name="qty" 
                 min="0"
-                max="${item?.add_to_cart.maximum}" 
+                max="${item?.stock_quantity}" 
                 value="${item?.quantity}" 
                 data-gameid="${item?.id}"
               />
           </td>
-          <td class="product-price-cell">${item.prices.price} kr</td>
-          <td class="product-total-cell">${item.prices.price * item?.quantity} kr</td>
+          <td class="product-price-cell">${item.price} kr</td>
+          <td class="product-total-cell">${item.price * item?.quantity} kr</td>
           <td class="product-delete-cell">
             <button class="remove-from-cart-btn" data-gameid="${item?.id}">
                 <span class="sr-only">Remove ${item?.name} from the cart</span>
@@ -438,13 +433,25 @@ function renderWishlist(wishlist) {
                     <p>
                     ${game.description}
                     </p>
-                </div>
+                </div>`;
+        let indicator = '';
+        if (game.stock_quantity < 3 && game.stock_quantity != 0) {
+            indicator = 'warning';
+        }
+        if (game.stock_quantity <= 0) {
+            indicator = 'danger';
+        }
+        wishlistItems += `
                 <div class="buy-product">
                     <div class="price-stock">
-                        <p class="price">${game.prices.price} ${game.prices.currency_symbol}</p>
-                        <p class="stock"><i class="fas fa-box stock-indicator"></i> ${game.add_to_cart.maximum} in stock</p>
+                        <p class="price">${game.price} kr</p>
+                        <p class="stock"><i class="fas fa-box stock-indicator ${indicator}"></i> ${
+            game.stock_quantity
+        } in stock</p>
                     </div>
-                    <button class="btn primary add-to-cart" data-gameid="${game.id}">Add to cart</button>
+                    <button class="btn primary add-to-cart" data-gameid="${game.id}" disabled="${
+            game.stock_quantity ? 'true' : 'false'
+        }>Add to cart</button>
                     <button class="link remove-from-wishlist-btn" data-gameid="${game.id}">Remove from wishlist</button>
                 </div>
             </div>
@@ -506,9 +513,13 @@ function renderSearchResults(searchResult, term) {
                 indicator = 'danger';
             }
             searchResultsHTML += `
-                        <p class="stock"><i class="fas fa-box stock-indicator ${indicator}"></i> ${result.stock_quantity} in stock</p>
+                        <p class="stock"><i class="fas fa-box stock-indicator ${indicator}"></i> ${
+                result.stock_quantity
+            } in stock</p>
                             </div>
-                            <button class="btn primary add-to-cart" data-gameid="${result.id}">Add to cart</button>
+                            <button class="btn primary add-to-cart" data-gameid="${result.id}" disabled="${
+                result.stock_quantity ? 'true' : 'false'
+            }>Add to cart</button>
                         </div>
                     </div>
                 </li>`;
