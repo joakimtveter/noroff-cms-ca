@@ -1,12 +1,12 @@
 import { showToast } from './toast.js';
-// import { baseUrl, key, secretKey } from './apiClient.js';
+import { baseUrl, key, secretKey, endpoint } from './apiClient.js';
 
 const currentLocation = window.location.pathname;
-const baseUrl = 'https://gamehubapi.tveter.one';
-const endpoint = 'https://gamehubapi.tveter.one/wp-json';
+// const baseUrl = 'https://gamehubapi.tveter.one';
+// const endpoint = 'https://gamehubapi.tveter.one/wp-json';
 
-const key = 'consumer_key=ck_acbfe22617ccc393377964d6299bb54d26e007b6';
-const secretKey = 'consumer_secret=cs_6b0773d3d8f02ea5d81759bbaf3bc88af81f8a31';
+// const key = 'consumer_key=ck_acbfe22617ccc393377964d6299bb54d26e007b6';
+// const secretKey = 'consumer_secret=cs_6b0773d3d8f02ea5d81759bbaf3bc88af81f8a31';
 
 function getValueFromURLParameter(parameter) {
     const urlParams = new Proxy(new URLSearchParams(window.location.search), {
@@ -172,9 +172,6 @@ async function loadSingleGame() {
         const response = await fetch(`${baseUrl}/wp-json/wc/v3/products/${params.gameid}?${key}&${secretKey}`);
         const game = await response.json();
         renderSingleGame(game);
-        enableAddToCartButtons();
-        enableWishlistButtons();
-        updateWishlistBadge();
     } catch (error) {
         showToast('Failed to fetch games', 'error');
         console.error(error);
@@ -651,8 +648,8 @@ function renderSingleGame(game) {
     productImageEventlistner();
     updateCartBadge();
     enableAddToCartButtons();
-    updateWishlistBadge();
     enableWishlistButtons();
+    updateWishlistBadge();
 }
 
 // UTILITY FUNCTIONS
