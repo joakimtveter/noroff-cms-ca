@@ -978,6 +978,10 @@ input[type='text'] {
     cursor: pointer;
 }
 
+.product__card {
+    max-width: 357px;
+}
+
 .product__card a {
     text-decoration: none;
 }
@@ -1021,6 +1025,12 @@ input[type='text'] {
 .add-to-cart:focus-visible {
     color: var(--color-accent);
     background-color: var(--color-secondary);
+}
+
+.add-to-cart.dark:hover,
+.add-to-cart.dark:focus-visible {
+    color: var(--color-accent);
+    background-color: var(--color-primary);
 }
 
 /* 404 PAGE */

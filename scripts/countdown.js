@@ -3,7 +3,7 @@ function countdownTimer() {
     const hoursElement = document.querySelector('.timer.hrs');
     const minutesElement = document.querySelector('.timer.min');
     const secondsElement = document.querySelector('.timer.sec');
-    const target = new Date('2022-10-30T07:00:00').getTime();
+    const target = new Date('2022-11-07T07:00:00').getTime();
     const now = new Date().getTime();
     const remaining = target - now;
 
@@ -20,7 +20,7 @@ function countdownTimer() {
     } else {
         document.querySelector(
             '.jumotron__subheading'
-        ).innerHTML = `<a class="btn btn-primary" href="/games.html">Find a game</a>`;
+        ).innerHTML = `<a class="btn btn-primary" href="/games.html">Find your game</a>`;
         document.querySelector('.countdown').remove();
     }
 }

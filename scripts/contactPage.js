@@ -1,5 +1,6 @@
 import { showToast } from './toast.js';
 import { validateMinLength, validateEmail } from './formValidation.js';
+import { enableMenuButtons, updateCartBadge } from './utils.js';
 
 const contactForm = document.querySelector('.contact-form');
 const nameField = document.getElementById('name');
@@ -115,3 +116,6 @@ const handleContactFormSubmit = (event) => {
 };
 
 submitButton.addEventListener('click', (e) => handleContactFormSubmit(e));
+
+enableMenuButtons();
+updateCartBadge();
