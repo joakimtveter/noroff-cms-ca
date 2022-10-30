@@ -38,7 +38,7 @@ function removeFromCart(gameId) {
     sessionStorage.setItem('cart', JSON.stringify(cartContent));
     loadCart();
     updateCartBadge();
-    showToast('Game removed from cart!', 'error');
+    showToast('Game removed from cart!', 'info');
 }
 
 async function loadCart() {
@@ -95,7 +95,7 @@ function renderCartItems(itemsInCart) {
               />
           </td>
           <td class="product-item-cell">
-              <h2 class="title">${item?.name}</h2>
+              <h2 class="title"><a href="/game.html?gameid=${item.id}">${item?.name}</a></h2>
           </td>
           <td class="product-qty-cell">
                 <label for="qty-${item?.id}" class="sr-only">Quantity</label>

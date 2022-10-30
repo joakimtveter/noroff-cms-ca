@@ -22,7 +22,7 @@ function toggleWhishlist(id) {
     const i = wishlist.indexOf(+id);
     if (i > -1) {
         wishlist.splice(i, 1);
-        showToast('Game removed from wishlist!', 'error');
+        showToast('Game removed from wishlist!', 'info');
     } else {
         wishlist.push(+id);
         showToast('Game added to wishlist!', 'success');
@@ -92,7 +92,7 @@ function addToCart(gameId) {
     });
     sessionStorage.setItem('cart', JSON.stringify(cartContent));
     updateCartBadge();
-    showToast('Game added to cart!', 'info');
+    showToast('Game added to cart!', 'success');
 }
 function updateCartBadge() {
     const indicator = document.getElementById('basket-indicator');
