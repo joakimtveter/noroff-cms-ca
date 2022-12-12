@@ -6,13 +6,9 @@ An ecommerce website for a fictional computer games company. A school assignment
 
 ## Description
 
-Add a more detailed description of what your project entails and set out to do.
+This is the final submission of the cross course project. It started off as a design task and has been built uppon several times in different subjects. It uses local and session storage for wishlist and cart functionallity.
 
-You can add some bullet points if you'd like to:
-
--   List item 1
--   List item 2
--   List item 3
+As the final task the website uses Wordpress as a headless CMS for the products.
 
 ## Built With
 
@@ -39,6 +35,12 @@ git clone https://github.com/joakimtveter/noroff-cms-ca.git
 To run this project you should use a webserver of some sort.
 I recomend the VS Code Extension [Live Server by Ritwick Dey](https://github.com/ritwickdey/vscode-live-server).
 
+## Deployment
+
+Any commits to the `main` branch triggers a deployment to the production environment.
+
+The production environment is hosted on [Netlify](https://netlify.com) at [https://noroff-cms-ca.netlify.app/](https://noroff-cms-ca.netlify.app/)
+
 ## Contributing
 
 This project is a submitted school project and is therefore not awailable for contributions.
@@ -53,5 +55,6 @@ If you want to get a hold of me, contact me through linked in or on my websites 
 
 ## Acknowledgments
 
-This is where you can add any acknowledgements if you'd like, such as to people who have helped you or any code snippets you'd like to mention. You can delete this section if you don't have any acknowledgements to make.
+The `.sr-only` class was informed by [Gaël Poupards](https://github.com/ffoodd) [GitHub Gist](https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034).
 
+The star rating was inspired by [this CSS-tricks article](https://css-tricks.com/five-methods-for-five-star-ratings/) by [Alfreds Genkins](https://github.com/alfredsgenkins)
